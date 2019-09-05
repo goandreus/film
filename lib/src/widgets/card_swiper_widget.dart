@@ -27,7 +27,7 @@ class CardSwiper extends StatelessWidget {
             );
           
         },
-        itemCount: 3,
+        itemCount: peliculas.length,
         //pagination: SwiperPagination(),
         //control: SwiperControl(),
       ),
