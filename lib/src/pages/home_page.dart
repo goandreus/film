@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:project/src/widgets/card_swiper_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -29,21 +29,8 @@ class HomePage extends StatelessWidget {
   }
 
    Widget _swiperTarget(){
-    return Container(
-      padding: EdgeInsets.only(top: 10.0),
-      width: double.infinity,
-      height: 300.0,
-      child: Swiper(
-        layout: SwiperLayout.STACK,
-        itemWidth: 200.0,
-        itemBuilder: (BuildContext context, int index){
-          return Image.network("https://images.pexels.com/photos/2007401/pexels-photo-2007401.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-          fit: BoxFit.fill,);
-        },
-        itemCount: 3,
-        //pagination: SwiperPagination(),
-        //control: SwiperControl(),
-      ),
+    return CardSwiper(
+      peliculas: [1,2,3,4,5],
     );
   }
 }
