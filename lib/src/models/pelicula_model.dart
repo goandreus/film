@@ -1,4 +1,18 @@
+class Peliculas {
 
+  List<Pelicula> items = List();
+  Peliculas();
+
+  Peliculas.fromJsonList(List<dynamic> jsonList){
+    if (jsonList == null ) return;
+
+    for (var item in jsonList){
+      final pelicula = Pelicula.fromJsonMap(item);
+      items.add(pelicula);
+    }
+  }
+
+}
 
 class Pelicula {
   double popularity;
@@ -37,7 +51,7 @@ class Pelicula {
   Pelicula.fromJsonMap(Map<String, dynamic> json){
 
     originalLanguage = json['original_language'];
-    popularity = json['popularity'];
+    popularity = json['popularity'] / 1;
     voteCount = json['vote_count'];
     video = json['video'];
     posterPath = json['poster_path'];
@@ -45,9 +59,9 @@ class Pelicula {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     originalTitle = json['original_title'];
-    genreIds = json['genre_ids'];
+    genreIds = json['genre_ids'].cast<int>();
     title = json['title'];
-    voteAverage = json['vote_average'];
+    voteAverage = json['vote_average'] / 1;
     overview = json['overview'];
     releaseDate = json['release_date'];
   }
