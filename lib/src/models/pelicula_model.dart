@@ -66,5 +66,14 @@ class Pelicula {
     releaseDate = json['release_date'];
   }
 
+  getPosterImg(){
+    if (posterPath == null ){
+      return 'https://vollrath.com/ClientCss/images/VollrathImages/No_Image_Available.jpg';
+    }else {
+      return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+    
+  }
+
 }
 
