@@ -23,8 +23,10 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            _swiperTarget()
+            _swiperTarget(),
+            _footer(context)
           ],
         ),
       )
@@ -36,7 +38,7 @@ class HomePage extends StatelessWidget {
    Widget _swiperTarget(){
 
      return FutureBuilder(
-      future: peliculasProvider.getEnCines(),
+      future: peliculasProvider.getPopulares(),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot){
         if(snapshot.hasData){
         return CardSwiper(
@@ -58,4 +60,26 @@ class HomePage extends StatelessWidget {
    //   peliculas: [1,2,3,4,5],
    // );
   }
+  Widget _footer(BuildContext context){
+  return Container(
+    width: double.infinity,
+    child: Column(
+      children: <Widget>[
+        Text('Populares', style: Theme.of(context).textTheme.subhead),
+
+         FutureBuilder(
+          future: peliculasProvider.getPopulares(),
+          builder: (BuildContext context, AsyncSnapshot<List> snapshot){
+            
+            snapshot.data?.forEach((p) => print(p.title));
+            return Container();
+          },
+        ),
+      ],
+    ),
+  );
 }
+
+
+}
+
